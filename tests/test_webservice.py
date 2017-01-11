@@ -111,8 +111,7 @@ class BaseTest(object):
     def test_permission_required(self):
         with self.assertRaisesRegex(PermissionRequiredError, 'permission'):
             self.create_error(
-                text=
-                '{"code":"PERMISSION_REQUIRED","error":"permission required"}',
+                text='{"code":"PERMISSION_REQUIRED","error":"permission required"}',
                 status_code=403)
 
     def test_400_with_invalid_json(self):
@@ -131,8 +130,8 @@ class BaseTest(object):
         with self.assertRaisesRegex(
                 HTTPError,
                 "Received a 400 with the following body: b?'?plain'?"):
-            self.create_error(headers={'Content-Type': 'text/plain'},
-                              text='plain')
+            self.create_error(
+                headers={'Content-Type': 'text/plain'}, text='plain')
 
     def test_400_without_json_body(self):
         with self.assertRaisesRegex(
@@ -166,10 +165,11 @@ class BaseTest(object):
                 'application/vnd.maxmind.com-error+json; charset=UTF-8;'
                 ' version=2.0'
             }
-        mock.post(self.base_uri + self.type,
-                  status_code=status_code,
-                  text=text,
-                  headers=headers)
+        mock.post(
+            self.base_uri + self.type,
+            status_code=status_code,
+            text=text,
+            headers=headers)
         return getattr(self.client, self.type)(self.full_request)
 
     @requests_mock.mock()
@@ -187,10 +187,11 @@ class BaseTest(object):
             }
         if text is None:
             text = self.response
-        mock.post(self.base_uri + self.type,
-                  status_code=200,
-                  text=text,
-                  headers=headers)
+        mock.post(
+            self.base_uri + self.type,
+            status_code=200,
+            text=text,
+            headers=headers)
         if client is None:
             client = self.client
         if request is None:
