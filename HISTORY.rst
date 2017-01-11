@@ -3,6 +3,12 @@
 History
 -------
 
+1.4.0 (2017-XX-XX)
+++++++++++++++++++
+
+* Added support for custom inputs. You may set up custom inputs from your
+  account portal.
+
 1.3.2 (2016-12-08)
 ++++++++++++++++++
 
